@@ -3,21 +3,21 @@ import s from './Fetch.module.scss';
 
 export function Fetch() {
 
-    const [jokeData, setJokeData] = useState();
+    const [apiData, setApiData] = useState();
 
     const url = `https://uselessfacts.jsph.pl/api/v2/facts/random`
 
     useEffect(() => {
-        async function getRandomJoke() {
+        async function getRandomData() {
             let res = await fetch(url);
             let data = await res.json();
-            setJokeData(data);
-            // console.log(jokeData)
+            setApiData(data);
+            // console.log(apiData)
         }
-        getRandomJoke();
+        getRandomData();
     }, []);
 
-    // console.log(jokeData);
+    // console.log(apiData);
 
     function refreshPage() {
         window.location.reload(false);
@@ -26,8 +26,8 @@ export function Fetch() {
     return (
         <>
             <section className={s.dataStyle}>
-                {jokeData ? <div>
-                    <p>{jokeData.text}</p>
+                {apiData ? <div>
+                    <p>{apiData.text}</p>
                 </div> : <p>Loading... please wait</p>}
 
                 <div>
