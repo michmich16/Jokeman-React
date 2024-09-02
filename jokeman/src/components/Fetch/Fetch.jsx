@@ -2,26 +2,19 @@ import { useEffect, useState } from 'react';
 import s from './Fetch.module.scss';
 
 export function Fetch() {
-
     const [apiData, setApiData] = useState();
-
     const url = `https://uselessfacts.jsph.pl/api/v2/facts/random`
 
+    async function getRandomData() {
+        let res = await fetch(url);
+        let data = await res.json();
+        setApiData(data);
+        // console.log(apiData)
+    }
+
     useEffect(() => {
-        async function getRandomData() {
-            let res = await fetch(url);
-            let data = await res.json();
-            setApiData(data);
-            // console.log(apiData)
-        }
         getRandomData();
     }, []);
-
-    // console.log(apiData);
-
-    function refreshPage() {
-        window.location.reload(false);
-    }
 
     return (
         <>
@@ -31,7 +24,7 @@ export function Fetch() {
                 </div> : <p>Loading... please wait</p>}
 
                 <div>
-                    <button onClick={refreshPage}>
+                    <button onClick={getRandomData}>
                         New One
                     </button>
                 </div>
