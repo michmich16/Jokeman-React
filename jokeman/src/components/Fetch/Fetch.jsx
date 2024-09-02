@@ -28,7 +28,7 @@ export function Fetch() {
             <section className={s.dataStyle}>
                 {jokeData ? <div>
                     <p>{jokeData.text}</p>
-                </div> : <p>Loading...</p>}
+                </div> : <p>Loading... please wait</p>}
 
                 <div>
                     <button onClick={refreshPage}>
