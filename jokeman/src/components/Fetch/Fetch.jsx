@@ -3,13 +3,13 @@ import s from './Fetch.module.scss';
 
 export function Fetch() {
     const [apiData, setApiData] = useState();
-    const url = `https://uselessfacts.jsph.pl/api/v2/facts/random`
+    const url = `https://official-joke-api.appspot.com/jokes/random`
 
     async function getRandomData() {
         let res = await fetch(url);
         let data = await res.json();
         setApiData(data);
-        // console.log(apiData)
+         console.log(apiData)
     }
 
     useEffect(() => {
@@ -20,7 +20,8 @@ export function Fetch() {
         <>
             <section className={s.dataStyle}>
                 {apiData ? <div>
-                    <p>{apiData.text}</p>
+                    <p>🧐{apiData.setup}</p>
+                    <p>😂{apiData.punchline}</p>
                 </div> : <p>Loading... please wait</p>}
 
                 <div>

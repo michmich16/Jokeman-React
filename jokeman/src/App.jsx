@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-    <h1>Random Useless Fact</h1>
+    <h1>Jokeman</h1>
       <Fetch />
     </>
   )
